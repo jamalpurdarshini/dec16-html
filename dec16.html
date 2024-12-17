@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Display Cards</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f4f4f4;
+      }
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+      }
+      .card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        max-width: 250px;
+        text-align: center;
+        border: 2px solid #ddd;
+      }
+      .card h3 {
+        margin: 0 0 10px;
+        color: #333;
+      }
+      .card p {
+        margin: 5px 0;
+        color: #555;
+      }
+      .card .level {
+        background-color: #007bff;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 12px;
+        display: inline-block;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Educational Journey</h1>
+    <div class="container" id="cardContainer">
+      <!-- Cards will be rendered here dynamically -->
+    </div>
+
+    <script>
+      // JSON Data
+      const data = {
+        school: [{ level: 1, Name: "smp", place: "Hyderabad" }],
+        Intermediate: [{ level: 2, Name: "sntns", place: "Attapur" }],
+        Graduation: [{ level: 3, Name: "ms clg", place: "Kachiguda" }],
+        Institute: [{ level: 4, Name: "10k codes", place: "Kphb" }],
+      };
+
+      // Select the container
+      const container = document.getElementById("cardContainer");
+
+      // Render Cards
+      for (const key in data) {
+        data[key].forEach((item) => {
+          const card = document.createElement("div");
+          card.classList.add("card");
+          card.innerHTML = `
+          <div class="level">Level ${item.level}</div>
+          <h3>${item.Name}</h3>
+          <p>Place: ${item.place}</p>
+          <p>Category: ${key}</p>
+        `;
+          container.appendChild(card);
+        });
+      }
+    </script>
+  </body>
+</html>
